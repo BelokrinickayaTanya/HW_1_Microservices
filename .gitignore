@@ -1,0 +1,45 @@
+# Виртуальное окружение
+.venv/
+venv/
+env/
+
+# Python кэш
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Данные и логи проекта
+data/
+logs/
+
+# Docker и системные файлы
+*.log
+.dockerignore
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+docker-compose.override.yml
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Временные файлы проекта
+temp/
+tmp/
+*.tmp
+*.temp
+*.bak

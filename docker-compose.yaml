@@ -1,0 +1,37 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  features:
+    build: .
+    command: sh -c "sleep 25 && python features.py"
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+
+  model:
+    build: .
+    command: sh -c "sleep 30 && python model.py"
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    volumes:
+      - ./data:/app/data
+
+  metric:
+    build: .
+    command: sh -c "sleep 35 && python metric.py"
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    volumes:
+      - ./logs:/app/logs
+
+  plot:
+    build: .
+    command: python plot.py
+    volumes:
+      - ./logs:/app/logs
